@@ -1,0 +1,25 @@
+{
+    "name": "racinepilote/oreoport",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Racine Pilote",
+            "email": "racinepilote@gmail.com"
+        }
+    ],
+    "require": {
+        "phpunit/phpunit": "^6.4"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "Src\\": "src/"
+        },
+        "classmap": [
+            "src/Classes",
+            "src/config",
+            "src/controllers",
+            "src/views"
+        ]
+    }
+}
