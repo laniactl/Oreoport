@@ -9,6 +9,4 @@ class Model
         $this->db = new Database();
     }
 
-    public function blah(){
-    }
 }

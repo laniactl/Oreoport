@@ -11,11 +11,11 @@ class Index extends Controller
 
     function index()
     {
-        $this->view->render('src/index/index');
+        $this->view->render('index/index');
     }
 
     function details()
     {
-        $this->view->render('src/index/index');
+        $this->view->render('index/index');
     }
 }
