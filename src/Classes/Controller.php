@@ -13,12 +13,8 @@ class Controller
 
         if (file_exists($path)) {
             $modelName = '\Src\models\\' . $name . '_Model';
-            //require $path;
-            //$test = "\Src\models\\test_Model()";
-
             $this->model = new $modelName;
 
-            //https://secure.php.net/manual/en/function.addslashes.php
         }
     }
 }
