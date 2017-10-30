@@ -1,4 +1,5 @@
 <?php
+use \Src\models;
 
 class Controller
 {
@@ -11,11 +12,11 @@ class Controller
         $path = 'src/models/'.$name.'_Model.php';
 
         if (file_exists($path)) {
-            $modelName = $name . '_Model';
-            $test = "\Src\models\\'";
-            $resutat = $test.$modelName;
-            $resutat1 = $test.$modelName;
-            $this->model = new \Src\models\test_Model();
+            $modelName = '\Src\models\\' . $name . '_Model';
+            //require $path;
+            //$test = "\Src\models\\test_Model()";
+
+            $this->model = new $modelName;
 
             //https://secure.php.net/manual/en/function.addslashes.php
         }

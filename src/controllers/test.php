@@ -1,6 +1,6 @@
 <?php
 
-class Test extends Controller
+class test extends Controller
 {
 
 
@@ -16,9 +16,14 @@ class Test extends Controller
 
     function details()
     {
-
-
         $this->view->arrayV  = $this->model->retourlalistedesvols();
         $this->index();
     }
+
+    function testfichier()
+    {
+        $this->model->testfichier();
+        $this->index();
+    }
+
 }
