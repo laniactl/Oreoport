@@ -12,7 +12,7 @@ class Controller
 
         if (file_exists($path)) {
             $modelName = $name . '_Model';
-            $test = '\Src\models\"';
+            $test = "\Src\models\\'";
             $resutat = $test.$modelName;
             $resutat1 = $test.$modelName;
             $this->model = new \Src\models\test_Model();
