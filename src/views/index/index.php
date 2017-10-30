@@ -1,4 +1,4 @@
 <hr />
-<?php echo $this->racine; ?>
+<?php ?>
 This is the main page Welcome !
 

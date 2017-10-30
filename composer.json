@@ -19,7 +19,8 @@
             "src/Classes",
             "src/config",
             "src/controllers",
-            "src/views"
+            "src/views",
+            "src/models"
         ]
     }
 }

@@ -17,16 +17,5 @@
 </head>
 <body>
 <h1>Index page!!</h1>
-<!--    --><?php //Session::inint(); ?>
-<!--    <div id="header">-->
-<!--        <br />-->
-<!--        <a href="--><?php //echo URL?><!--index">Index</a>-->
-<!--        <a href="--><?php //echo URL?><!--help">help</a>-->
-<!--        --><?php //if (Session::get('loggedIn') == true):?>
-<!--            <a href="--><?php //echo URL?><!--dashboard/logout">Logout</a>-->
-<!--        --><?php //else: ?>
-<!--            <a href="--><?php //echo URL?><!--login">Login</a>-->
-<!--        --><?php //endif; ?>
-<!---->
-<!--    </div>-->
+
 <div id="content">

@@ -13,8 +13,22 @@ class NotifyDAO extends Model
     {
         parent::__construct();
     }
-    public function updateNotification(string $flightsID, string $_phoneNumb):bool{}
+    public function update(string $flightsID, string $_phoneNumb):bool{}
+
     public function findAll():array {}
-    public function create(string $flightsID, string $_phoneNumb):bool {}
-    public function delete():bool{}
+
+    public function read(string $id)
+    {
+        // TODO: Implement read() method.
+    }
+
+    public function delete(string $id): bool
+    {
+        // TODO: Implement delete() method.
+    }
+
+    public function create($obj, $para): bool
+    {
+        // TODO: Implement creat() method.
+    }
 }

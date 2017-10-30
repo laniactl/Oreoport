@@ -8,11 +8,7 @@ class Bootstrap
         $url = rtrim($url, '/');
         $url = explode('/', $url);
 
-        // only for deguging
-        //print_r($url);
-
          if (empty($url[0])){
-//             require '/controllers/index.php';
              $controller = new Index();
              $controller->index();
              return false;
@@ -22,7 +18,6 @@ class Bootstrap
         if (file_exists($file)) {
             require $file;
         }else{
-//            require '../controllers/errors.php';
             $controller = new Errors();
             $controller->index();
             return false;
@@ -30,16 +25,19 @@ class Bootstrap
         $controller = new $url[0];
         $controller->loadModel($url[0]);
 
-        // calling methods !!
-
 
         // calling methods
-        if (isset($url[2])) {
+        if(isset($url[3])){
+            if (method_exists($controller, $url[1])) {
+                $controller->{$url[1]}($url[2], $url[3]);
+            } else {
+                $this->error ();
+            }
+        } elseif (isset($url[2])) {
             if (method_exists($controller, $url[1])) {
                 $controller->{$url[1]}($url[2]);
             } else {
                 $this->error();
-
             }
         } else {
             if (isset($url[1])) {

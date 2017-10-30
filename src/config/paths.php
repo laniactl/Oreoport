@@ -1,3 +1,3 @@
 <?php
-define('URL','http://localhost/oreoport/');
+define('URL','http://localhost/oreo_port/oreoport/');
 
