@@ -2,11 +2,11 @@
 
 namespace Src\Models;
 
-class CommunicationWithControlTower_Model
+class ControlTower_Model
 {
     public function readInfoOnFightsIntoFileAndSendInfo(string $fileName){}
     public function readInfoEventsIntoFileAndSendInfo(string $fileName){}
-    public function isFlightInfosAreChange($file):bool {}
-    public function isEventsInfoAreChange($file):bool {}
+    public function isFileExist($file):bool {}
     public function archiveInfo(){}
 }
+

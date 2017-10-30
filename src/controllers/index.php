@@ -16,6 +16,8 @@ class Index extends Controller
 
     function details()
     {
-        $this->view->render('index/index');
+        $this->view->racine=123;
+        $this->view->lania=999;
+        $this->index();
     }
 }
