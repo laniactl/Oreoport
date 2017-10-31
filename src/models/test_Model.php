@@ -48,8 +48,8 @@ class test_Model
                     $num = count($data);
                     echo "<p> $num fields in line $row: <br /></p>\n";
                     $row++;
-                    for ($c=0; $c < $num; $c++) {
-                        echo $data[$c] . "<br />\n";
+                    for ($i=0; $i < $num; $i++) {
+                        echo $data[$i] . "<br />\n";
                     }
                 }
                 $test1 = 131;
