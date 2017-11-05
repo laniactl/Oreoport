@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-    <title>Test</title>
+    <title>Home</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="<?php echo URL;?>/src/public/css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
@@ -63,7 +63,7 @@
                                     data-toggle="modal" data-target="#modalSMS">Alertes SMS</button></li>
                     </ul>
                 </li>
-                <li><a href="faq.php">Foire aux questions</a></li>
+                <li><a href="<?php echo URL;?>/faq">Foire aux questions</a></li>
             </ul>
 
             <div class="modal fade" id="modalSMS" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -143,7 +143,7 @@
                                         data-toggle="modal" data-target="#modalSMS">Me désinscrire</button></li>
                         </ul>
                     </li>
-                    <li class="active"><a href="faq.php">Foire aux questions<span style="font-size:14px;"
+                    <li class="active"><a href="<?php echo URL;?>/faq">Foire aux questions<span style="font-size:14px;"
                                                                                   class="pull-right hidden-xs showopacity "></span></a></li>
                 </ul>
             </div>
