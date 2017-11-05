@@ -61,6 +61,8 @@ create table vols_details
 	num_vols varchar(15) not null,
 	date_depart date default 'NULL' null,
 	date_arrivee date default 'NULL' null,
+	heure_est_depart time default 'NULL' null,
+	heure_est_arrivee time default 'NULL' null,
 	date_modified timestamp default 'NULL' null,
 	date_created timestamp default 'NULL' null,
 	vol_status int default 'NULL' null
