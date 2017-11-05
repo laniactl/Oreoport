@@ -14,9 +14,9 @@ class Flight extends Controller
         $this->view->render('index/index');
     }
 
-    function liste()
+    function liste($val)
     {
-        $this->model->liste();
+        $this->model->liste($val);
     }
     function create()
     {
