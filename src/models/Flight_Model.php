@@ -30,7 +30,6 @@ class Flight_Model extends Model
         $_startIndex = $_GET['jtStartIndex'];
         $_pageSize = $_GET['jtPageSize'];
 
-
         $stmt = $this->db->prepare("SELECT vols_details.vols_details_id, vols_details.num_vols, vols_details.heure_est_depart,
                                     vols_details.heure_est_arrivee, vols_details.vol_status, compagnie.compagnie_nom,
                                     nom_aeroport_ville.nom_ville FROM oreoport.vols 
@@ -43,18 +42,17 @@ class Flight_Model extends Model
 //        $stmt->bindParam(':itstratInd', $_startIndex);
 //        $stmt->bindParam(':pageSize', $_pageSize);
         $stmt->execute();
-
         $result = $stmt->fetchAll();
-        $rows = array();
-        foreach ($result as $row){
-            $rows[] = $row;
-        }
+//        $rows = array();
+//        foreach ($result as $row){
+//            $rows[] = $row;
+//        }
 
         //Return result to jTable
         $jTableResult = array();
         $jTableResult['Result'] = "OK";
         $jTableResult['TotalRecordCount'] = $recordCount;
-        $jTableResult['Records'] = $rows;
+        $jTableResult['Records'] = $result;
         print json_encode($jTableResult);
 
 
