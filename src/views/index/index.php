@@ -1,13 +1,8 @@
 <?php ?>
 <div class=" main jtable">
-    <?php
-    $today = date("Y-m-d");
-    $tomorrow = date("Y-m-d", time() + 86400);
-    echo $today;
-    echo $tomorrow;
-    ?>
-    <input type="button" class="btn btn-secondary btn-lg" value="Aujourd'hui" > </input>
-    <input type="button" class="btn btn-secondary btn-lg" value="Demain" >  </input>
+
+    <button type="button" class="btn btn-secondary btn-lg linkToday" >Aujourd'hui </button>
+    <button type="button" class="btn btn-secondary btn-lg linkTomorrow" >Demain  </button>
     <div id="OreoPortTableContainer" style="width: 1000px;">
 
 </div>

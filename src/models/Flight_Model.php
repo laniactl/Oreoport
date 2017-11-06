@@ -14,9 +14,10 @@ class Flight_Model extends Model
 
     public function liste($val)
     {
+//        echo $val;
         // query des arrivées
-        if ($val = "arrivee") {
-
+        if ($val == "arrivee") {
+            //echo"arrivee";
             $_dateArrive = '2017-11-03';
             $_villeDest = 'YUL';
 
@@ -49,7 +50,7 @@ class Flight_Model extends Model
 
         // Query des departs.
         else{
-            $_dateArrive = '2017-11-03';
+            $_dateArrive = '2017-11-04';
             $_villeDepart = 'YUL';
 
             $ctmt = $this->db->prepare("SELECT COUNT(*) AS RecordCount
@@ -71,7 +72,7 @@ class Flight_Model extends Model
                                     INNER JOIN oreoport.compagnie ON (vols.compagnie_id = compagnie.compagnie_id)
                                     INNER JOIN oreoport.vols_details ON (vols_details.num_vols = vols.num_vols)
                                     INNER JOIN oreoport.nom_aeroport_ville ON (vols.ville_provenance = nom_aeroport_ville.code_ville)
-                                    WHERE (vols_details.date_arrivee = :datearrive AND ville_ville_provenance = :ville)
+                                    WHERE (vols_details.date_arrivee = :datearrive AND ville_provenance = :ville)
                                     ORDER BY " . $_GET['jtSorting'] . " LIMIT " . $_GET['jtStartIndex'] . "," . $_GET['jtPageSize']);
             $stmt->bindParam(':datearrive', $_dateArrive);
             $stmt->bindParam(':ville', $_villeDepart);
