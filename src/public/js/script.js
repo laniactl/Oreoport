@@ -22,9 +22,4 @@ $(document).ready(function () {
         height2 = $('.main').height()
         htmlbodyHeightUpdate()
     });
-
-  $('linkarrivee').click(function() {
-    alert('ho ho ho');
-  });
-
 });
