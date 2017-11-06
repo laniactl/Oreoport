@@ -14,20 +14,22 @@ class Flight_Model extends Model
 
     public function liste($val)
     {
+        $_dateArrive = '2017-11-03';
+        $_villeDest = 'YUL';
+
         $ctmt = $this->db->prepare("SELECT COUNT(*) AS RecordCount
                           FROM
                           `oreoport`.`vols_details`
                           INNER JOIN `oreoport`.`vols`
                           ON (`vols_details`.`num_vols` = `vols`.`num_vols`)
-                           WHERE `vols`.`ville_destination` = 'YUL' AND `vols_details`.`date_arrivee` = '2017-11-03';");
-
+                           WHERE `vols`.`ville_destination` = :ville AND `vols_details`.`date_arrivee` = :datearrive ;");
+        $ctmt->bindParam(':datearrive', $_dateArrive);
+        $ctmt->bindParam(':ville', $_villeDest);
         $ctmt->execute();
         $result = $ctmt->fetchall();
         $recordCount = $result[0]['RecordCount'];
 
-        $_dateArrive = '2017-11-03';
-        $_villeDest = 'YUL';
-        $_pageSize = $_GET['jtPageSize'];
+
 
         $stmt = $this->db->prepare("SELECT vols_details.vols_details_id, vols_details.num_vols, vols_details.heure_est_depart,
                                     vols_details.heure_est_arrivee, vols_details.vol_status, compagnie.compagnie_nom,
@@ -42,16 +44,12 @@ class Flight_Model extends Model
         $stmt->execute();
         $result = $stmt->fetchAll();
 
-
         //Return result to jTable
         $jTableResult = array();
         $jTableResult['Result'] = "OK";
         $jTableResult['TotalRecordCount'] = $recordCount;
         $jTableResult['Records'] = $result;
         print json_encode($jTableResult);
-
-
-
-
+        
     }
 }
