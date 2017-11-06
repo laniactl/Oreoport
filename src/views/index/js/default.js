@@ -1,10 +1,12 @@
 $(document).ready(function () {
   var dep_arr = "depart";
+  var i = 0;
   loadjTable(dep_arr);
 
   $("a.linkarrivee").click(function () {
-    alert('Arrivee was clicked.')
+    alert('Arrivee was clicked. ' + i )
     loadjTable(dep_arr);
+    i++;
   });
 
   $("a.linkdepart").click(function () {

@@ -3,9 +3,9 @@
     <title>FAQ</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="<?php echo URL;?>/src/public/css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= URL?>/src/public/css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"/>
-    <link href="<?php echo URL;?>/src/public/css/styles.css" rel="stylesheet">
+    <link href="<?= URL?>/src/public/css/styles.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
@@ -23,16 +23,16 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="active" href="<?php echo URL;?>/index"><img width="55" height="55"
-                                                   class="img-responsive pull-left" src="<?php echo URL;?>/src/public/images/oreoport_blanc.jpg"
+            <a class="active" href="<?= URL?>/index"><img width="55" height="55"
+                                                   class="img-responsive pull-left" src="<?= URL?>/src/public/images/oreoport_blanc.jpg"
                                                    alt="logo"/><span class="sr-only">(current)</span></a>
         </div>
 
         <!-- ÉLÉMENTS QUI VONT DANS LE COLLAPSE -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="<?php echo URL;?>/index">Home</a></li>
-                <li><a href="<?php echo URL;?>/faq">Foire aux questions</a></li>
+                <li><a href="<?= URL?>/index">Home</a></li>
+                <li><a href="<?= URL?>/faq">Foire aux questions</a></li>
             </ul>
 
         </div><!-- navbar-collapse -->
