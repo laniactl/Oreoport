@@ -1808,7 +1808,7 @@ THE SOFTWARE.
                     .addClass('jtable-command-button jtable-edit-command-button')
                     .append($span)
                     .click(function (e) {
-                        alert("AllO! clcik icon");
+                        alert("AllO! click icon");
                         e.preventDefault();
                         e.stopPropagation();
                         self._showEditForm($row);

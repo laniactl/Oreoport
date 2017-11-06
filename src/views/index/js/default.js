@@ -1,24 +1,24 @@
 $(document).ready(function () {
-  var dep_arr = "depart";
-  var i = 0;
+  var depArr = "depart";
+  var today = "today";
   var j = 0;
-  loadjTable(dep_arr);
+  loadjTable(depArr, today);
 
   $("a.linkarrivee").click(function () {
     alert('Arrivee was clicked. i: ' + i )
-    loadjTable(dep_arr);
+    loadjTable(depArr, today);
     i++;
   });
 
   $("a.linkdepart").click(function () {
     alert('Depart was clicked. j: ' + j)
-    loadjTable(dep_arr);
+    loadjTable(depArr, today);
     j++;
   });
 
 });
 
-function loadjTable (depA) {
+function loadjTable (depArrivee, todayTomorrow) {
   //todo @passe la variabe arriver et depart afin de mettre le paramettre aproprier.
   var test = depA;
   var dep_arr = "depart";
@@ -31,6 +31,7 @@ function loadjTable (depA) {
     defaultSorting: 'heure_est_arrivee ASC',
     actions: {
       listAction: "flight/liste/" + dep_arr,
+        updateAction: 'ActionsOreoPortSorted.php?action=update',
 //                createAction: 'flight/create',
 //                updateAction: 'flight/update',
 //                deleteAction: 'flight/delete'
