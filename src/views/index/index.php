@@ -6,8 +6,19 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
-        // todo :: Ici RACINE pour le tableau
+      var dep_arr = "depart";
+        // todo :: Patrice Comment reload le tableau ??
         //Prepare jTable
+      $("a.linkarrivee").click(function () {
+        alert('Arrivee was clicked.')
+        dep_arr ="arrivee"
+
+      });
+
+      $("a.linkdepart").click(function () {
+        alert('Depart was clicked.')
+      });
+
         $('#OreoPortTableContainer').jtable({
             title: 'OreoPort de Montréal',
             paging: true,
@@ -15,7 +26,7 @@
             sorting: true,
             defaultSorting: 'heure_est_arrivee ASC',
             actions: {
-                listAction: 'flight/liste/depart',
+                listAction: "flight/liste/" + dep_arr,
 //                createAction: 'flight/create',
 //                updateAction: 'flight/update',
 //                deleteAction: 'flight/delete'

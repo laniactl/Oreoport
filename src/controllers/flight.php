@@ -16,6 +16,8 @@ class Flight extends Controller
 
     function liste($val)
     {
+        $test = $val;
+        $test2 = "123";
         $this->model->liste($val);
     }
     function create()

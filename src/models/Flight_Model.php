@@ -14,7 +14,6 @@ class Flight_Model extends Model
 
     public function liste($val)
     {
-
         $ctmt = $this->db->prepare("SELECT COUNT(*) AS RecordCount
                           FROM
                           `oreoport`.`vols_details`
@@ -26,8 +25,8 @@ class Flight_Model extends Model
         $result = $ctmt->fetchall();
         $recordCount = $result[0]['RecordCount'];
 
-        $_sort = $_GET['jtSorting'];
-        $_startIndex = $_GET['jtStartIndex'];
+        $_dateArrive = '2017-11-03';
+        $_villeDest = 'YUL';
         $_pageSize = $_GET['jtPageSize'];
 
         $stmt = $this->db->prepare("SELECT vols_details.vols_details_id, vols_details.num_vols, vols_details.heure_est_depart,
@@ -36,17 +35,13 @@ class Flight_Model extends Model
                                     INNER JOIN oreoport.compagnie ON (vols.compagnie_id = compagnie.compagnie_id)
                                     INNER JOIN oreoport.vols_details ON (vols_details.num_vols = vols.num_vols)
                                     INNER JOIN oreoport.nom_aeroport_ville ON (vols.ville_provenance = nom_aeroport_ville.code_ville)
-                                    WHERE (vols_details.date_arrivee = '2017-11-03') AND (ville_destination = 'YUL')
+                                    WHERE (vols_details.date_arrivee = :datearrive AND ville_destination = :ville)
                                     ORDER BY ".$_GET['jtSorting']." LIMIT " . $_GET['jtStartIndex'] . "," . $_GET['jtPageSize']);
-//        $stmt->bindParam(':sorting', $_sort);
-//        $stmt->bindParam(':itstratInd', $_startIndex);
-//        $stmt->bindParam(':pageSize', $_pageSize);
+        $stmt->bindParam(':datearrive', $_dateArrive);
+        $stmt->bindParam(':ville', $_villeDest);
         $stmt->execute();
         $result = $stmt->fetchAll();
-//        $rows = array();
-//        foreach ($result as $row){
-//            $rows[] = $row;
-//        }
+
 
         //Return result to jTable
         $jTableResult = array();
