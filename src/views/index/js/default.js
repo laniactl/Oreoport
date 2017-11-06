@@ -1,17 +1,19 @@
 $(document).ready(function () {
   var dep_arr = "depart";
   var i = 0;
+  var j = 0;
   loadjTable(dep_arr);
 
   $("a.linkarrivee").click(function () {
-    alert('Arrivee was clicked. ' + i )
+    alert('Arrivee was clicked. i: ' + i )
     loadjTable(dep_arr);
     i++;
   });
 
   $("a.linkdepart").click(function () {
-    alert('Depart was clicked.')
+    alert('Depart was clicked. j: ' + j)
     loadjTable(dep_arr);
+    j++;
   });
 
 });
