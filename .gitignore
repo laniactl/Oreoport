@@ -78,7 +78,7 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 ### Composer template
-composer.phar
+#composer.phar
 /vendor/
 
 # Commit your application's lock file http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file
