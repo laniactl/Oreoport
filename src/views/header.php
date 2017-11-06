@@ -18,16 +18,15 @@
     <script src="<?php echo URL;?>/src/public/scripts/jtable/jquery.jtable.js" type="text/javascript"></script>
     <script src="<?php echo URL;?>/src/public/js/script.js"></script>
     <script type="text/javascript" src="<?php echo URL;?>/src/public/js/custom.js"></script>
-
+<!--    <script type="text/javascript" src="--><?php //echo URL;?><!--/src/views/index/js/default.js"></script>-->
     <?php
-    if (isset($this->js))
-    {
-        foreach ($this->js as $js)
-        {
-            echo '<script type="text/javascript" src="'.URL.'src/views/'.$js.'"></script>';
+    if (isset($this->js)) {
+        foreach ($this->js as $js) {
+            echo '<script language="JavaScript" type="text/javascript" src="' . URL . '/src/views/' . $js . '"></script>';
         }
     }
     ?>
+
 </head>
 <body>
 <!-- HEADER NAVIGATION -->

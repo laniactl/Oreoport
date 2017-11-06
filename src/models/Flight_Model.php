@@ -50,6 +50,6 @@ class Flight_Model extends Model
         $jTableResult['TotalRecordCount'] = $recordCount;
         $jTableResult['Records'] = $result;
         print json_encode($jTableResult);
-        
+
     }
 }
