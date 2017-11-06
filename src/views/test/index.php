@@ -1,5 +1,5 @@
 <hr />
-Ceci est la page de test !
+Ceci est la page de test 2 !
 <?php
     if (isset($this->arrayV)){
         $_arrayVols = $this->arrayV;
