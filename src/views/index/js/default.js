@@ -2,7 +2,7 @@ $(document).ready(function () {
   var depArr = "depart";
 
   var j = 0;
-
+    var reqDate = new Date();
     var today = new Date();
     var tomorrow = new Date();
 
@@ -18,9 +18,10 @@ $(document).ready(function () {
   $("a.linkarrivee").click(function () {
     // $('jtable-column-header jtable-column-header-sortable').empty();
       $('#jtable').empty();
+      $("<input type='checkbox' name='nom_ville' >").text("TESTTEST");
       alert('Arrivee was clicked. i: ' + j )
       depArr = "arrivee";
-      loadjTable(depArr, today);
+      loadjTable(depArr, reqDate);
       j++;
   });
 
@@ -28,20 +29,21 @@ $(document).ready(function () {
       $('#jtable').empty();
       alert('Depart was clicked. j: ' + j)
       depArr = "depart";
-      loadjTable(depArr, today);
+      loadjTable(depArr, reqDate);
       j++;
   });
 
   $(".linkToday").click(function () {
     alert('Aujourd hui was clicked. j: ' + j)
-
-    loadjTable(depArr, today);
+      reqDate = today;
+    loadjTable(depArr, reqDate);
     j++;
     });
 
   $(".linkTomorrow").click(function () {
     alert('Tomorrow was clicked. j: ' + j)
-    loadjTable(depArr, tomorrow);
+      reqDate = tomorrow;
+      loadjTable(depArr, reqDate);
     j++;
     });
 

@@ -71,7 +71,7 @@ class Flight_Model extends Model
                                     nom_aeroport_ville.nom_ville FROM oreoport.vols 
                                     INNER JOIN oreoport.compagnie ON (vols.compagnie_id = compagnie.compagnie_id)
                                     INNER JOIN oreoport.vols_details ON (vols_details.num_vols = vols.num_vols)
-                                    INNER JOIN oreoport.nom_aeroport_ville ON (vols.ville_provenance = nom_aeroport_ville.code_ville)
+                                    INNER JOIN oreoport.nom_aeroport_ville ON (vols.ville_destination = nom_aeroport_ville.code_ville)
                                     WHERE (vols_details.date_arrivee = :datearrive AND ville_provenance = :ville)
                                     ORDER BY " . $_GET['jtSorting'] . " LIMIT " . $_GET['jtStartIndex'] . "," . $_GET['jtPageSize']);
             $stmt->bindParam(':datearrive', $_dateArrive);
