@@ -2,9 +2,7 @@ $(document).ready(function () {
   var depArr = "depart";
 
   var j = 0;
-    var reqDate = new Date();
-    var today = new Date();
-    var tomorrow = new Date();
+    var reqDate = "today";
     var ville = "Ville orgine";
     // var dateObj = new Date();
     // var month = dateObj.getUTCMonth() + 1; //months from 1-12
@@ -12,11 +10,13 @@ $(document).ready(function () {
     // var year = dateObj.getUTCFullYear();
     //
     // newdate = year + "/" + month + "/" + day;
-  loadjTable(depArr, today, ville);
+
+  loadjTable(depArr, reqDate, ville);
+
   $("a.linkarrivee").click(function () {
     // $('jtable-column-header jtable-column-header-sortable').empty();
       $('#jtable').empty();
-      $("<input type='checkbox' name='nom_ville' >").text("TESTTEST");
+      $('.titre').text("État des vols en arrivée");
       alert('Arrivee was clicked. i: ' + j );
       depArr = "arrivee";
       loadjTable(depArr, reqDate, ville);
@@ -25,6 +25,7 @@ $(document).ready(function () {
 
   $("a.linkdepart").click(function () {
       $('#jtable').empty();
+      $('.titre').text("État des vols en départ");
       alert('Depart was clicked. j: ' + j);
       ville = "Ville Destination";
       depArr = "depart";
@@ -34,14 +35,14 @@ $(document).ready(function () {
 
   $(".linkToday").click(function () {
     alert('Aujourd hui was clicked. j: ' + j);
-      reqDate = today;
+      reqDate = "today";
     loadjTable(depArr, reqDate, ville);
     j++;
     });
 
   $(".linkTomorrow").click(function () {
     alert('Tomorrow was clicked. j: ' + j);
-      reqDate = tomorrow;
+      reqDate = "tomorrow";
       loadjTable(depArr, reqDate, ville);
     j++;
     });
@@ -51,7 +52,7 @@ function loadjTable (depArrivee, todayTomorrow, villeParameter) {
   //todo @passe la variabe arriver et depart afin de mettre le paramettre aproprier.
   var test = "depA";
   var dep_arr = depArrivee;
-  var jour = todayTomorrow;
+  var reqDate = todayTomorrow;
   //Prepare jTable
      $('#OreoPortTableContainer').jtable({
          title: 'OreoPort de Montréal',
@@ -94,7 +95,7 @@ function loadjTable (depArrivee, todayTomorrow, villeParameter) {
                  width: '20%'
              },
              nom_ville: {
-                 title: villeParameter,
+                 title: 'Ville',
                  width: '25%',
                  create: false,
                  edit: false

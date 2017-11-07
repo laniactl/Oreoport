@@ -14,14 +14,14 @@ class Flight extends Controller
         $this->view->render('index/index');
     }
 
-    function liste($departArrivee, $valreqToday)
+    function liste($departArrivee, $valreqDate)
     {
         $test = $departArrivee;
 
         if ($departArrivee == "depart") {
-            $this->model->listeDepart($valreqToday);
+            $this->model->listeDepart($valreqDate);
         } else {
-            $this->model->listeArrivee($valreqToday);
+            $this->model->listeArrivee($valreqDate);
         }
 
 
