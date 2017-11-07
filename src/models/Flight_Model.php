@@ -15,10 +15,11 @@ class Flight_Model extends Model
     public function listeDepart($valreqToday){
         // Query des departs.
         if ($valreqToday == "today"){
-            $_dateArrive = '2017-11-04';
+            $_dateArrive = date('Y-m-d'); //'2017-11-04';
+
         }
         else {
-            $_dateArrive = '2017-11-05';
+            $_dateArrive = date('Y-m-d',time()+86400);//'2017-11-05';
         }
         //$_dateArrive = '2017-11-04';
         $_villeDepart = 'YUL';
@@ -67,10 +68,10 @@ class Flight_Model extends Model
     public function listeArrivee($valreqToday)
     {
         if ($valreqToday == "today"){
-            $_dateArrive = '2017-11-04';
+            $_dateArrive = date('Y-m-d');//'2017-11-04';
         }
         else {
-            $_dateArrive = '2017-11-05';
+            $_dateArrive = date('Y-m-d', time()+86400);//'2017-11-05';
         }
             //$_dateArrive = '2017-11-03';
             $_villeDest = 'YUL';
