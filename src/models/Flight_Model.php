@@ -12,7 +12,7 @@ class Flight_Model extends Model
         parent::__construct();
     }
 
-    public function liste($val)
+    public function listeDepart($valreqToday)
     {
 //        echo $val;
         // query des arrivées
