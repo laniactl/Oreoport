@@ -36,6 +36,7 @@ $RECYCLE.BIN/
 .idea/**/tasks.xml
 .idea/dictionaries
 
+oreoport.iml
 # Sensitive or high-churn files:
 .idea/**/dataSources/
 .idea/**/dataSources.ids
