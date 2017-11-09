@@ -17,7 +17,7 @@ $(document).ready(function () {
     // $('jtable-column-header jtable-column-header-sortable').empty();
       $('#jtable').empty();
       $('.titre').text("État des vols en arrivée");
-      alert('Arrivee was clicked. i: ' + j );
+      // alert('Arrivee was clicked. i: ' + j );
       depArr = "arrivee";
       loadjTable(depArr, reqDate, ville);
       j++;
@@ -26,7 +26,7 @@ $(document).ready(function () {
   $("a.linkdepart").click(function () {
       $('#jtable').empty();
       $('.titre').text("État des vols en départ");
-      alert('Depart was clicked. j: ' + j);
+      // alert('Depart was clicked. j: ' + j);
       ville = "Ville Destination";
       depArr = "depart";
       loadjTable(depArr, reqDate, ville);
@@ -34,14 +34,14 @@ $(document).ready(function () {
   });
 
   $(".linkToday").click(function () {
-    alert('Aujourd hui was clicked. j: ' + j);
+    // alert('Aujourd hui was clicked. j: ' + j);
       reqDate = "today";
     loadjTable(depArr, reqDate, ville);
     j++;
     });
 
   $(".linkTomorrow").click(function () {
-    alert('Tomorrow was clicked. j: ' + j);
+    // alert('Tomorrow was clicked. j: ' + j);
       reqDate = "tomorrow";
       loadjTable(depArr, reqDate, ville);
     j++;

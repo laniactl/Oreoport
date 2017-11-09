@@ -55,8 +55,8 @@
                     <a href="<?= URL?>/index" class="dropdown-toggle" data-toggle="dropdown" role="button"
                        aria-haspopup="true" aria-expanded="false">État des vols <span class="caret"></span></a>
                     <ul class="dropdown-menu inverse-dropdown">
-                        <li><a href="<?= URL ?>/index" class="linkdepart">Départs</a></li>
-                        <li><a href="<?= URL ?>/index" class="linkarrivee">Arrivées</a></li>
+                        <li><a href="#" class="linkdepart">Départs</a></li>
+                        <li><a href="#" class="linkarrivee">Arrivées</a></li>
                         <li role="separator" class="divider"></li>
                         <li><button type="button" class="btn btn-info"
                                     data-toggle="modal" data-target="#modalSMS">Alertes SMS</button></li>
