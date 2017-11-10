@@ -16,7 +16,7 @@ class test extends Controller
 
     function details()
     {
-        $this->view->arrayV  = $this->model->retourlalistedesvols();
+        $this->view->array = $this->model->retourlalistedesvols();
         $this->index();
     }
 

@@ -2,62 +2,39 @@
 
 namespace Src\models;
 
-class test_Model
+use Src\Classes\Model;
+
+class test_Model extends Model
 {
-   public function __construct()
-   {
-        $this->Dao = new FlightsDAO();
-   }
+    public function __construct()
+    {
+        parent::__construct();
+//        $this->Dao = new FlightsDAO();
+    }
 
-   public function retourlalistedesvols():array
-   {
-      return $this->Dao->findAll();
-
-   }
+    public function retourlalistedesvols(): array
+    {
+        return $this->Dao->findAll();
+    }
 
     public function testfichier()
     {
-        {
-            /*  $query = <<<eof
-                  LOAD DATA INFILE '$filename'
-                   INTO TABLE flights
-                   FIELDS TERMINATED BY '|' OPTIONALLY ENCLOSED BY '"'
-                   LINES TERMINATED BY '\n'
-                  (vols_id, compagnie_id,ville_provenance, ville_destination, heure_depart, heure_arrivee, temps_de_vol, num_vols)
-              eof;
+//         https://stackoverflow.com/questions/11448307/importing-csv-data-using-php-mysql
+        $filename = "/Users/racinepilote/Sites/oreoport/src/models/csvOreoport.csv";
 
-              $db->query($query);*/
-            $filename = "csvOreoport.csv";
+        $test = 123123;
+$query = <<<eof
+   LOAD DATA INFILE '$filename'
+   INTO TABLE vols
+   FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"'
+   LINES TERMINATED BY '\r\n'
+   (vols_id, compagnie_id, ville_provenance, ville_destination, heure_depart, heure_arrivee, temps_de_vols, num_vols)
+eof;
 
-//            $file = fopen("./xScript/csvOreoport.csv","r+");
-//
-//            $test = 13;
-//            while (!eof($file)) {
-//
-//                $infoFlights = array(fgetcsv($file));
-//                $test = 13;
-//            }
-            /*
-             * https://stackoverflow.com/questions/9139202/how-to-parse-a-csv-file-using-php
-             * https://secure.php.net/manual/en/function.fgetcsv.php
-             */
-            $row = 1;
-            if (($handle = fopen("./xScript/csvOreoport.csv", "r")) !== FALSE) {
-                $test = 13;
-                while (($data = fgetcsv($handle, 2000, ",")) !== FALSE) {
-                    $num = count($data);
-                    echo "<p> $num fields in line $row: <br /></p>\n";
-                    $row++;
-                    for ($i=0; $i < $num; $i++) {
-                        echo $data[$i] . "<br />\n";
-                    }
-                }
-                $test1 = 131;
-                fclose($handle);
-            }
+$test = 123;
+$result =  $this->db->query($query);
 
+$testasdf = 11211;
 
-
-        }
     }
 }
