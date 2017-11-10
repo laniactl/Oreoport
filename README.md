@@ -43,3 +43,9 @@ apache et mysql.
     define('URL','http://localhost/oreoport');
     
 ```
+
+pour la methode load dans la db 
+il est important --local-infile=1
+
+mysql -uroot -p --local-infile=1 oreoport
+
