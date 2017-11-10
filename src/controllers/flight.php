@@ -18,11 +18,14 @@ class Flight extends Controller
     {
         $test = $departArrivee;
 
-        if(isset($_GET["recherche"])) {
-            $test = $departArrivee;
+        if(isset($_POST["recherche"])) {
+            $numVol =  ($_POST["recherche"]);
+            if ($departArrivee == "depart") {
+                $this->model->listeDepartFiltre($valreqDate, $numVol);
+            }
+            else $this->model->listeArriveeFiltre($valreqDate, $numVol);
         }
-
-        if ($departArrivee == "depart") {
+        elseif ($departArrivee == "depart") {
             $this->model->listeDepart($valreqDate);
         } else {
             $this->model->listeArrivee($valreqDate);

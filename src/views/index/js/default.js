@@ -30,6 +30,7 @@ $(document).ready(function () {
     $(".linkToday").click(function () {
     // alert('Aujourd hui was clicked. j: ' + j);
       reqDate = "today";
+        $('#jtable').empty();
     loadjTable(depArr, reqDate, ville);
     j++;
     });
@@ -37,21 +38,33 @@ $(document).ready(function () {
     $(".linkTomorrow").click(function () {
     // alert('Tomorrow was clicked. j: ' + j);
       reqDate = "tomorrow";
+        $('#jtable').empty();
       loadjTable(depArr, reqDate, ville);
     j++;
     });
     //
-    $('#LoadRecordsButton').click(function () {
-        reqDate = "tomorrow";
-        recherche = "";
-        typeRecherche = "";
-        $.get("index.php",{paramOne :recherche, paramTwo : typeRecherche }, function () {
-            alert(recherche);
+
+    $('#LoadRecordsButton').click(function (e) {
+        e.preventDefault();
+        $('#jtable').empty();
+        $('#OreoPortTableContainer').jtable('load', {
+            recherche: $('#recherche').val(),
+            searchId: $('#searchId').val()
         });
+    });
+
+    // $('#LoadRecordsButton').click(function () {
+        // reqDate = "tomorrow";
+        // recherche = "";
+        // typeRecherche = "";
+        // alert('Tomorrow was clicked. j: ' + j);
+        // recherche: $('#recherche').val()
+        // searchId: $('#searchId').val()
+        // });
         // searchVol = $_
         // loadjTable(depArr, reqDate, ville);
         // j++;
-    });
+    // });
 
 });
 
