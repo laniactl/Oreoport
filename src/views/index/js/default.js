@@ -4,16 +4,10 @@ $(document).ready(function () {
   var j = 0;
     var reqDate = "today";
     var ville = "Ville orgine";
-    // var dateObj = new Date();
-    // var month = dateObj.getUTCMonth() + 1; //months from 1-12
-    // var day = dateObj.getUTCDate();
-    // var year = dateObj.getUTCFullYear();
-    //
-    // newdate = year + "/" + month + "/" + day;
 
   loadjTable(depArr, reqDate, ville);
 
-  $("a.linkarrivee").click(function () {
+    $("a.linkarrivee").click(function () {
     // $('jtable-column-header jtable-column-header-sortable').empty();
       $('#jtable').empty();
       $('.titre').text("État des vols en arrivée");
@@ -21,9 +15,9 @@ $(document).ready(function () {
       depArr = "arrivee";
       loadjTable(depArr, reqDate, ville);
       j++;
-  });
+    });
 
-  $("a.linkdepart").click(function () {
+    $("a.linkdepart").click(function () {
       $('#jtable').empty();
       $('.titre').text("État des vols en départ");
       // alert('Depart was clicked. j: ' + j);
@@ -31,21 +25,34 @@ $(document).ready(function () {
       depArr = "depart";
       loadjTable(depArr, reqDate, ville);
       j++;
-  });
+     });
 
-  $(".linkToday").click(function () {
+    $(".linkToday").click(function () {
     // alert('Aujourd hui was clicked. j: ' + j);
       reqDate = "today";
     loadjTable(depArr, reqDate, ville);
     j++;
     });
 
-  $(".linkTomorrow").click(function () {
+    $(".linkTomorrow").click(function () {
     // alert('Tomorrow was clicked. j: ' + j);
       reqDate = "tomorrow";
       loadjTable(depArr, reqDate, ville);
     j++;
     });
+    //
+    $('#LoadRecordsButton').click(function () {
+        reqDate = "tomorrow";
+        recherche = "";
+        typeRecherche = "";
+        $.get("index.php",{paramOne :recherche, paramTwo : typeRecherche }, function () {
+            alert(recherche);
+        });
+        // searchVol = $_
+        // loadjTable(depArr, reqDate, ville);
+        // j++;
+    });
+
 });
 
 function loadjTable (depArrivee, todayTomorrow, villeParameter) {
