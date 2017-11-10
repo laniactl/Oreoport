@@ -109,25 +109,26 @@ class Flight_Model extends Model
 
     public function listeArriveeFiltre($valreqToday)
     {
-        $_aRechercher = $_POST['recherche'];
-        if ($valreqToday == "today") {
-            $_dateArrive = date('Y-m-d'); //'2017-11-04';
+        $aRechercher = $_POST["recherche"];
+        $aFiltrer = $_POST["searchId"];
 
+        if ($valreqToday == "today") {
+            $_dateArrive = date('Y-m-d');//'2017-11-04';
         } else {
             $_dateArrive = date('Y-m-d', time() + 86400);//'2017-11-05';
         }
-        //$_dateArrive = '2017-11-04';
-        $_villeDepart = 'YUL';
+        //$_dateArrive = '2017-11-03';
+        $_villeDest = 'YUL';
 
         $ctmt = $this->db->prepare("SELECT COUNT(*) AS RecordCount
                           FROM
                           `oreoport`.`vols_details`
                           INNER JOIN `oreoport`.`vols`
                           ON (`vols_details`.`num_vols` = `vols`.`num_vols`)
-                          WHERE `vols`.`ville_destination` = :ville AND `vols_details`.`date_arrivee` = :datearrive AND `vols_details`.`num_vols` = :recherche");
+                          WHERE `vols`.`ville_destination` = :ville AND `vols_details`.`date_arrivee` = :datearrive AND `vols_details`.`num_vols` = :recherche ;");
         $ctmt->bindParam(':datearrive', $_dateArrive);
-        $ctmt->bindParam(':ville', $_villeDepart);
-        $ctmt->bindParam(':recherche', $_aRechercher);
+        $ctmt->bindParam(':ville', $_villeDest);
+        $ctmt->bindParam(':recherche', $aRechercher);
         $ctmt->execute();
         $result = $ctmt->fetchall();
         $recordCount = $result[0]['RecordCount'];
@@ -135,47 +136,49 @@ class Flight_Model extends Model
 
         $stmt = $this->db->prepare("SELECT vols_details.vols_details_id, vols_details.num_vols, vols_details.heure_est_depart,
                                     vols_details.heure_est_arrivee, vols_details.vol_status, compagnie.compagnie_nom,
-                                    nom_aeroport_ville.nom_ville FROM oreoport.vols 
+                                    nom_aeroport_ville.nom_ville 
+                                    FROM oreoport.vols
                                     INNER JOIN oreoport.compagnie ON (vols.compagnie_id = compagnie.compagnie_id)
                                     INNER JOIN oreoport.vols_details ON (vols_details.num_vols = vols.num_vols)
-                                    INNER JOIN oreoport.nom_aeroport_ville ON (vols.ville_destination = nom_aeroport_ville.code_ville)
-                                    WHERE (vols_details.date_arrivee = :datearrive AND ville_destination = :ville AND `vols_details`.`num_vols` = :recherche)
+                                    INNER JOIN oreoport.nom_aeroport_ville ON (vols.ville_provenance = nom_aeroport_ville.code_ville)
+                                    WHERE vols_details.num_vols = :recherchevol 
                                     ORDER BY " . $_GET['jtSorting'] . " LIMIT " . $_GET['jtStartIndex'] . "," . $_GET['jtPageSize']);
         $stmt->bindParam(':datearrive', $_dateArrive);
-        $stmt->bindParam(':ville', $_villeDepart);
-        $stmt->bindParam(':recherche', $_aRechercher);
+        $stmt->bindParam(':ville', $_villeDest);
+        $stmt->bindParam(':recherchevol', $aRechercher);
         $stmt->execute();
-        $result = $stmt->fetchAll();
+        $result2 = $stmt->fetchAll();
 
         //Return result to jTable
         $jTableResult = array();
         $jTableResult['Result'] = "OK";
         $jTableResult['TotalRecordCount'] = $recordCount;
-        $jTableResult['Records'] = $result;
+        $jTableResult['Records'] = $result2;
         print json_encode($jTableResult);
     }
 //
     public function listeDepartFiltre($valreqToday, $numVol)
     {
-        $_aRechercher = $_POST['recherche'];
-        if ($valreqToday == "today") {
-            $_dateArrive = date('Y-m-d'); //'2017-11-04';
+        $aRechercher = $_POST["recherche"];
+        $aFiltrer = $_POST["searchId"];
 
+        if ($valreqToday == "today") {
+            $_dateArrive = date('Y-m-d');//'2017-11-04';
         } else {
             $_dateArrive = date('Y-m-d', time() + 86400);//'2017-11-05';
         }
-        //$_dateArrive = '2017-11-04';
-        $_villeDepart = 'YUL';
+//$_dateArrive = '2017-11-03';
+        $_villeDest = 'YUL';
 
         $ctmt = $this->db->prepare("SELECT COUNT(*) AS RecordCount
                           FROM
                           `oreoport`.`vols_details`
                           INNER JOIN `oreoport`.`vols`
                           ON (`vols_details`.`num_vols` = `vols`.`num_vols`)
-                          WHERE `vols`.`ville_provenance` = :ville AND `vols_details`.`date_arrivee` = :datearrive AND `vols_details`.`num_vols` = :recherche");
+                          WHERE `vols`.`ville_provenance` = :ville AND `vols_details`.`date_arrivee` = :datearrive AND `vols_details`.`num_vols` = :recherche ");
         $ctmt->bindParam(':datearrive', $_dateArrive);
-        $ctmt->bindParam(':ville', $_villeDepart);
-        $ctmt->bindParam(':recherche', $_aRechercher);
+        $ctmt->bindParam(':ville', $_villeDest);
+        $ctmt->bindParam(':recherche', $aRechercher);
         $ctmt->execute();
         $result = $ctmt->fetchall();
         $recordCount = $result[0]['RecordCount'];
@@ -183,25 +186,24 @@ class Flight_Model extends Model
 
         $stmt = $this->db->prepare("SELECT vols_details.vols_details_id, vols_details.num_vols, vols_details.heure_est_depart,
                                     vols_details.heure_est_arrivee, vols_details.vol_status, compagnie.compagnie_nom,
-                                    nom_aeroport_ville.nom_ville FROM oreoport.vols 
-                                    INNER JOIN oreoport.compagnie ON (vols.compagnie_id = compagnie.compagnie_id)
-                                    INNER JOIN oreoport.vols_details ON (vols_details.num_vols = vols.num_vols)
-                                    INNER JOIN oreoport.nom_aeroport_ville ON (vols.ville_destination = nom_aeroport_ville.code_ville)
-                                    WHERE (vols_details.date_arrivee = :datearrive AND ville_provenance = :ville AND `vols_details`.`num_vols` = :recherche)
+                                    nom_aeroport_ville.nom_ville FROM oreoport.vols
+                                    INNER JOIN compagnie ON (vols.compagnie_id = compagnie.compagnie_id)
+                                    INNER JOIN vols_details ON (vols_details.num_vols = vols.num_vols)
+                                    INNER JOIN nom_aeroport_ville ON (vols.ville_provenance = nom_aeroport_ville.code_ville)
+                                    WHERE (ville_provenance = :ville AND vols_details.date_arrivee = :datearrive AND vols_details.num_vols = :recherchevol)
                                     ORDER BY " . $_GET['jtSorting'] . " LIMIT " . $_GET['jtStartIndex'] . "," . $_GET['jtPageSize']);
         $stmt->bindParam(':datearrive', $_dateArrive);
-        $stmt->bindParam(':ville', $_villeDepart);
-        $stmt->bindParam(':recherche', $_aRechercher);
+        $stmt->bindParam(':ville', $_villeDest);
+        $stmt->bindParam(':recherchevol', $aRechercher);
         $stmt->execute();
         $result = $stmt->fetchAll();
 
-        //Return result to jTable
+//Return result to jTable
         $jTableResult = array();
         $jTableResult['Result'] = "OK";
         $jTableResult['TotalRecordCount'] = $recordCount;
         $jTableResult['Records'] = $result;
         print json_encode($jTableResult);
-
     }
 
 }
