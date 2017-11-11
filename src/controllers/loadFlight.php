@@ -1,6 +1,6 @@
 <?php
 
-class test extends Controller
+class loadFlight extends Controller
 {
 
 
@@ -20,10 +20,9 @@ class test extends Controller
         $this->index();
     }
 
-    function testfichier()
+    function loadvols()
     {
-        $this->model->testfichier();
+        $this->model->loadvols();
         $this->index();
     }
-
 }
