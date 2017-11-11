@@ -82,8 +82,8 @@ function loadjTable (depArrivee, todayTomorrow, villeParameter) {
          defaultSorting: 'heure_est_arrivee ASC',
          actions: {
              listAction: "flight/liste/" + dep_arr +"/"+reqDate,
-             //updateAction: 'ActionsOreoPortSorted.php?action=update',
-//             createAction: 'flight/create',
+             // updateAction: 'ActionsOreoPortSorted.php?action=update',
+            // createAction: 'flight/create',
               updateAction: 'flight/update',
 //                deleteAction: 'flight/delete'
          },
