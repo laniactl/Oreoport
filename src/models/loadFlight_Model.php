@@ -14,6 +14,8 @@ class loadFlight_Model extends Model
     /**
      * https://stackoverflow.com/questions/11448307/importing-csv-data-using-php-mysql
      * https://www.youtube.com/watch?v=G2Vg5hUz5eg
+     * https://stackoverflow.com/questions/19139434/php-move-a-file-into-a-different-folder-on-the-server
+     * https://secure.php.net/manual/en/function.basename.php
      */
     public function loadvols()
     {
