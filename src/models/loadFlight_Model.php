@@ -21,6 +21,7 @@ class loadFlight_Model extends Model
     {
         $filenameRelativepath = "./tourdecontrole/vols/oreoportvols.csv";
         if (file_exists($filenameRelativepath)) {
+            $this->deleteAllRowsTable();
             $filename = basename($filenameRelativepath);
             $pahtFile = realpath(dirname($filenameRelativepath));
             $pahtFileFilename = $pahtFile . "/" . $filename;
@@ -34,8 +35,8 @@ class loadFlight_Model extends Model
 eof;
             $result = $this->db->query($query);
             rename($pahtFileFilename, "./tourdecontrole/archive/".$filename);
-            $this->loadvolsDetails();
         }
+            $this->loadvolsDetails();
     }
 
 
@@ -43,6 +44,7 @@ eof;
     {
         $filenameRelativepath = "./tourdecontrole/details/oreoportvolsdetails.csv";
         if (file_exists($filenameRelativepath)) {
+//            $this->deleteAllRowsTable("vols_details");
             $filename = basename($filenameRelativepath);
             $pahtFile = realpath(dirname($filenameRelativepath));
             $pahtFileFilename = $pahtFile . "/" . $filename;
@@ -58,6 +60,17 @@ eof;
             rename($pahtFileFilename, "./tourdecontrole/archive/".$filename);
 
         }
+    }
+
+    private function deleteAllRowsTable(){
+
+        $sql = "TRUNCATE TABLE vols_details";
+        $result = $this->db->exec($sql);
+
+        $sql = "DELETE FROM vols";
+        $result = $this->db->exec($sql);
+        $test =123;
+
     }
 
 }
