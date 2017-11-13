@@ -43,9 +43,10 @@ apache et mysql.
     define('URL','http://localhost/oreoport');
     
 ```
+##Le lien pour load les vols et vols_details dans la db.
+http://localhost/oreoport/loadflight/loadvols
 
-pour la methode load dans la db 
-il est important --local-infile=1
 
+ligne de commende pour tester dans la db
 mysql -uroot -p --local-infile=1 oreoport
 

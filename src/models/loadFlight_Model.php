@@ -27,11 +27,11 @@ class loadFlight_Model extends Model
             $pahtFileFilename = $pahtFile . "/" . $filename;
 
             $query = <<<eof
-   LOAD DATA INFILE '$pahtFileFilename'
-   INTO TABLE vols
-   FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"'
-   LINES TERMINATED BY '\r\n'
-   (vols_id, compagnie_id, ville_provenance, ville_destination, heure_depart, heure_arrivee, temps_de_vols, num_vols)
+LOAD DATA INFILE '$pahtFileFilename'
+INTO TABLE vols
+FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+(vols_id, compagnie_id, ville_provenance, ville_destination, heure_depart, heure_arrivee, temps_de_vols, num_vols);
 eof;
             $result = $this->db->query($query);
             rename($pahtFileFilename, "./tourdecontrole/archive/".$filename);
@@ -44,14 +44,14 @@ eof;
     {
         $filenameRelativepath = "./tourdecontrole/details/oreoportvolsdetails.csv";
         if (file_exists($filenameRelativepath)) {
-//            $this->deleteAllRowsTable("vols_details");
+            $this->deleteAllRowsTable("vols_details");
             $filename = basename($filenameRelativepath);
             $pahtFile = realpath(dirname($filenameRelativepath));
             $pahtFileFilename = $pahtFile . "/" . $filename;
 
             $query = <<<eof
    LOAD DATA INFILE '$pahtFileFilename'
-   INTO TABLE oreoport.vols_details
+   INTO TABLE vols_details
    FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"'
    LINES TERMINATED BY '\n'
    (oreoport.vols_details.vols_details_id, oreoport.vols_details.num_vols, oreoport.vols_details.date_depart, oreoport.vols_details.date_arrivee, oreoport.vols_details.heure_est_depart, oreoport.vols_details.heure_est_arrivee, oreoport.vols_details.date_modified, oreoport.vols_details.date_created, oreoport.vols_details.vol_status);
