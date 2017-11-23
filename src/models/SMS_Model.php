@@ -25,8 +25,11 @@
     use Twilio\Rest\Client;
 
     // Step 2: set our AccountSid and AuthToken from https://twilio.com/console
-    $AccountSid = "AC8cf9e7fb66f29067803ff66facd66d00";
-    $AuthToken = "a8be4b5b7b7c36b8d4f10246d71d4e16";
+//    $AccountSid = "AC8cf9e7fb66f29067803ff66facd66d00";
+//    $AuthToken = "a8be4b5b7b7c36b8d4f10246d71d4e16";
+
+$AccountSid = "AC601698b8be394b40c07d99bc714df79a";
+$AuthToken = "454db2ce680d71f30a35338c8ab446c3";
 
     // Step 3: instantiate a new Twilio Rest Client
     $client = new Client($AccountSid, $AuthToken);
@@ -35,6 +38,7 @@
     // Feel free to change/add your own phone number and name here.
     $people = array(
         "+15143468023" => "Patrice",
+        "+15145826431" => "Racine"
 //        "+15558675308" => "Boots",
 //        "+15558675307" => "Virgil"
     );
@@ -51,10 +55,10 @@
             array(
                 // Step 6: Change the 'From' number below to be a valid Twilio number
                 // that you've purchased
-                'from' => "+14385008383",
+                'from' => "+14387937640",
 
                 // the sms body
-                'body' => "Hey $name, Monkey Party at 6PM. Bring Bananas!"
+                'body' => "Salut $name, J'ai réussi à envoyer des SMS!"
             )
         );
 
