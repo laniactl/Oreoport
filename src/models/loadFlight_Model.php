@@ -44,7 +44,7 @@ eof;
     {
         $filenameRelativepath = "./tourdecontrole/details/oreoportvolsdetails.csv";
         if (file_exists($filenameRelativepath)) {
-            $this->deleteAllRowsTable("vols_details");
+//            $this->deleteAllRowsTable("vols_details");
             $filename = basename($filenameRelativepath);
             $pahtFile = realpath(dirname($filenameRelativepath));
             $pahtFileFilename = $pahtFile . "/" . $filename;
