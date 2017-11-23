@@ -13,7 +13,7 @@
                     <option value="nom_ville">Villes</option>
                     <option value="compagnie_nom">Compagnies</option>
                 </select>
-                <button type="submit" id="LoadRecordsButton">Load records</button>
+                <button type="submit" id="LoadRecordsBut">Load records</button>
             </form>
     </div>
     <div id="OreoPortTableContainer" style="width: 1000px;">

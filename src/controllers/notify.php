@@ -23,10 +23,17 @@ class Notify extends Controller
     }
 
 
-    function newNotification($_numvol, $_smsPhone)
+    function newnotification()
     {
-        $test = 123;
+    echo"allas";
+//        SELECT
+//    vols_details_id
+//FROM
+//    oreoport.`vols_details`
+//WHERE (date_arrivee ="2017-11-23"
+//    AND num_vols = "LX541");
 
+    //
        $this->model->userAskToBeNotified($_numvol, $_smsPhone);
 
     }

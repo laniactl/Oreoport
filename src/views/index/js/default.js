@@ -139,6 +139,18 @@ function loadjTable (depArrivee, todayTomorrow, villeParameter) {
          }
  });
 
-  $('#OreoPortTableContainer').jtable('load');
+  $('#sendsms').click(function () {
+    alert("avant sms")
+    var form = $(document.forms["formsms"]);
+    var serializedata = form.serialize();
 
+    $.post("http://localhost/oreoport/notify/newNotification", serializedata, function (data) {
+      alert("reusis sms");
+      return false;
+    });
+
+  });
+
+     $('#OreoPortTableContainer').jtable('load');
 }
+

@@ -1804,7 +1804,7 @@ THE SOFTWARE.
 
             if (self.options.actions.updateAction != undefined) {
                 var $span = $('<span></span>').html(self.options.messages.editRecord);
-                var $button = $('<button title="' + self.options.messages.editRecord + '" data-toggle="modal" data-target="#modalSMS"></button>')
+                var $button = $('<button id="inscription" title="' + self.options.messages.editRecord + '" data-toggle="modal" data-target="#modalSMS"></button>')
                     .addClass('jtable-command-button jtable-edit-command-button')
                     .append($span)
                     .click(function (e) {

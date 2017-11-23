@@ -74,7 +74,7 @@
                             <h4 class="modal-title" id="myModalLabel">Alertes SMS</h4>
                         </div>
                         <div class="modal-body">
-                            <form class="form-horizontal" style="max-width:450px;">
+                            <form id="formsms" class="form-horizontal" style="max-width:450px;">
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">N° Vol</label>
                                     <div class="col-sm-10">
@@ -90,7 +90,7 @@
                             </form>
                         </div>
                         <div class="modal-footer" id="modal-footer">
-                            <button type="button" class="btn btn btn-success inscription" data-dismiss="modal">M'inscrire</button>
+                            <button id="sendsms" type="button" class="btn btn btn-success inscription" data-dismiss="modal">M'inscrire</button>
                             <button type="button" class="btn btn btn-info desincription" data-dismiss="modal">Me désinscrire</button>
                             <button type="button" class="btn btn btn-warning" data-dismiss="modal">Annuler</button>
                         </div>
