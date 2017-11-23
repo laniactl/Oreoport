@@ -42,6 +42,12 @@ $(document).ready(function () {
       loadjTable(depArr, reqDate, ville);
     j++;
     });
+
+    $(".SMS").click(function () {
+        alert('SMS envoyer' );
+        // controllers/SMS.php
+
+    });
     //
 
     $('#LoadRecordsButton').click(function (e) {
@@ -51,6 +57,16 @@ $(document).ready(function () {
             recherche: $('#recherche').val(),
             searchId: $('#searchId').val()
         });
+
+
+    $('#inscription').click(function (e) {
+        e.preventDefault();
+        $_numvol = $('#numvol').val();
+        $_smsPhone = $('#smsPhone').val();
+
+        alert('SMS SAUVER ' + $_numvol );
+    });
+
     });
 
     // $('#LoadRecordsButton').click(function () {

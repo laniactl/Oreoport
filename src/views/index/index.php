@@ -3,6 +3,8 @@
 
     <button type="button" class="btn btn-secondary btn-lg linkToday" >Aujourd'hui </button>
     <button type="button" class="btn btn-secondary btn-lg linkTomorrow" >Demain  </button>
+    <button type="button" class="btn btn-secondary btn-lg SMS" >SMS test  </button>
+
     <div class="filtering">
             <form>
                 Rechercher: <input type="text" name="recherche" id="recherche" />
