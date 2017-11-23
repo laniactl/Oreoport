@@ -4,6 +4,12 @@ $(document).ready(function () {
   var j = 0;
     var reqDate = "today";
     var ville = "Ville orgine";
+    // var dateObj = new Date();
+    // var month = dateObj.getUTCMonth() + 1; //months from 1-12
+    // var day = dateObj.getUTCDate();
+    // var year = dateObj.getUTCFullYear();
+    //
+    // newdate = year + "/" + month + "/" + day;
 
   loadjTable(depArr, reqDate, ville);
 
@@ -42,6 +48,12 @@ $(document).ready(function () {
       loadjTable(depArr, reqDate, ville);
     j++;
     });
+
+    $(".SMS").click(function () {
+        alert('SMS envoyer' );
+        // controllers/SMS.php
+
+    });
     //
 
     $('#LoadRecordsButton').click(function (e) {
@@ -51,6 +63,16 @@ $(document).ready(function () {
             recherche: $('#recherche').val(),
             searchId: $('#searchId').val()
         });
+
+
+    $('#inscription').click(function (e) {
+        e.preventDefault();
+        $_numvol = $('#numvol').val();
+        $_smsPhone = $('#smsPhone').val();
+
+        alert('SMS SAUVER ' + $_numvol );
+    });
+
     });
 
     // $('#LoadRecordsButton').click(function () {
@@ -82,8 +104,8 @@ function loadjTable (depArrivee, todayTomorrow, villeParameter) {
          defaultSorting: 'heure_est_arrivee ASC',
          actions: {
              listAction: "flight/liste/" + dep_arr +"/"+reqDate,
-             // updateAction: 'ActionsOreoPortSorted.php?action=update',
-            // createAction: 'flight/create',
+             //updateAction: 'ActionsOreoPortSorted.php?action=update',
+//             createAction: 'flight/create',
               updateAction: 'flight/update',
 //                deleteAction: 'flight/delete'
          },
@@ -123,6 +145,18 @@ function loadjTable (depArrivee, todayTomorrow, villeParameter) {
          }
  });
 
-  $('#OreoPortTableContainer').jtable('load');
+  $('#sendsms').click(function () {
+    alert("avant sms")
+    var form = $(document.forms["formsms"]);
+    var serializedata = form.serialize();
 
+    $.post("http://localhost/oreoport/notify/newNotification", serializedata, function (data) {
+      alert("reusis sms");
+      return false;
+    });
+
+  });
+
+     $('#OreoPortTableContainer').jtable('load');
 }
+

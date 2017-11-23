@@ -1642,7 +1642,7 @@ THE SOFTWARE.
 
             //Localization
             messages: {
-                editRecord: 'Edit Record'
+                editRecord: 'Message SMS'
             }
         },
 
@@ -1804,14 +1804,19 @@ THE SOFTWARE.
 
             if (self.options.actions.updateAction != undefined) {
                 var $span = $('<span></span>').html(self.options.messages.editRecord);
-                var $button = $('<button title="' + self.options.messages.editRecord + '"></button>')
+                var $button = $('<button id="inscription" title="' + self.options.messages.editRecord + '" data-toggle="modal" data-target="#modalSMS"></button>')
                     .addClass('jtable-command-button jtable-edit-command-button')
                     .append($span)
                     .click(function (e) {
-                        alert("AllO! click icon");
-                        e.preventDefault();
-                        e.stopPropagation();
-                        self._showEditForm($row);
+                        // var fieldName = self._fieldList[i];
+                        // var modal = document.getElementById('modal-footer');
+                        // modal.style.display = "block";
+                        // alert("AllO! click icon");
+                        //
+                        // $('#modal-footer').modal('show');
+                        // e.preventDefault();
+                        // e.stopPropagation();
+                        // self._showEditForm($row);
                     });
                 $('<td></td>')
                     .addClass('jtable-command-column')

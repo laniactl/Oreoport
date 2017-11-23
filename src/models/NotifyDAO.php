@@ -31,4 +31,6 @@ class NotifyDAO extends Model
     {
         // TODO: Implement creat() method.
     }
+
+
 }

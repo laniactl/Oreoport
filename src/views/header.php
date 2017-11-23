@@ -74,24 +74,24 @@
                             <h4 class="modal-title" id="myModalLabel">Alertes SMS</h4>
                         </div>
                         <div class="modal-body">
-                            <form class="form-horizontal" style="max-width:450px;">
+                            <form id="formsms" class="form-horizontal" style="max-width:450px;">
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">N° Vol</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" placeholder="AA999 ou AA9999">
+                                        <input type="text" class="form-control numvol" placeholder="AA999 ou AA9999">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Téléphone</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" placeholder="(999) 999 9999">
+                                        <input type="text" class="form-control smsphone" placeholder="(999) 999 9999">
                                     </div>
                                 </div>
                             </form>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn btn-success" data-dismiss="modal">M'inscrire</button>
-                            <button type="button" class="btn btn btn-info" data-dismiss="modal">Me désinscrire</button>
+                        <div class="modal-footer" id="modal-footer">
+                            <button id="sendsms" type="button" class="btn btn btn-success inscription" data-dismiss="modal">M'inscrire</button>
+                            <button type="button" class="btn btn btn-info desincription" data-dismiss="modal">Me désinscrire</button>
                             <button type="button" class="btn btn btn-warning" data-dismiss="modal">Annuler</button>
                         </div>
                     </div>
