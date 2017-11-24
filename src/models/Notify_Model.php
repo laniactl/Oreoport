@@ -36,8 +36,11 @@ class Notify_Model extends Model
 //       $message->setPhoneNumber("+15143468023");
 //       $message->setMessage("Salut je fait un test");
 //       $messagemodel->sendSMS($message);
-        $jsonData =  $_POST["username"];
-        $modif_jsondata = json_decode($jsonData,true);
+        $_vol =  $_POST["vol"];
+        $_phone = $_POST["phone"];
+
+        $test =123;
+
 
 
     }
