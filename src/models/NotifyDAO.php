@@ -42,7 +42,7 @@ class NotifyDAO extends Model
         $st->bindParam(':datearrive', $_dateArrive);
         $st->bindParam(':vols', $arrayNotif[0]);
         $st->execute();
-        $result = $ctmt->fetchall();
+        $noVoldetail = $ctmt->fetchall();
 
         $test =123;
     }
