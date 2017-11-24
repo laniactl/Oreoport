@@ -1,6 +1,6 @@
+(function ($) {
 $(document).ready(function () {
   var depArr = "depart";
-
   var j = 0;
     var reqDate = "today";
     var ville = "Ville orgine";
@@ -145,18 +145,40 @@ function loadjTable (depArrivee, todayTomorrow, villeParameter) {
          }
  });
 
+
   $('#sendsms').click(function () {
     alert("avant sms")
     var form = $(document.forms["formsms"]);
     var serializedata = form.serialize();
 
-    $.post("http://localhost/oreoport/notify/newnotification/", serializedata, function (data) {
+    $.post("oreoport/notify/newnotification/", serializedata, function (data) {
       alert("reusis sms");
       return false;
     });
 
   });
-
      $('#OreoPortTableContainer').jtable('load');
-}
 
+  $('#OreoPortTableContainer').jtable({
+    recordsLoaded: function(event, data) {
+    $('.jtable-data-row').click(function() {
+      var row_id = $(this).attr('data-record-key');
+      var record = $(this).data('record');
+      console.log(record[1]);
+      numerovol = record[1]
+      $('#fieldVol').val(numerovol);
+      // alert('clicked row with id '+row_id +' tes: ' + record  );
+    });
+  }
+});
+
+  //
+  // var $selectedRows = $('#OreoPortTableContainer').jtable('selectedRows'),records = [];
+  // $selectedRows.each(function () {
+  //   var record = $(this).data('record');
+  //   records.push(record);
+  // });
+  // console.log(records);
+
+}
+})(jQuery);

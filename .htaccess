@@ -4,3 +4,8 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-l
 RewriteRule ^(.*)$ index.php?_url=$1 [QSA,L]
+
+php_value max_input_vars 6000
+php_value suhosin.get.max_vars 6000
+php_value suhosin.post.max_vars 6000
+php_value suhosin.request.max_vars 6000:

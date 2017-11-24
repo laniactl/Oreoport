@@ -29,7 +29,14 @@ class NotifyDAO extends Model
 
     public function create($obj, $para): bool
     {
-        // TODO: Implement creat() method.
+
+        $ctmt = $this->db->prepare("SELECT vols_details_id FROM oreoport.`vols_details` WHERE (date_arrivee =:datearrive
+    AND num_vols = :vols);");
+        $ctmt->bindParam(':datearrive', $_dateArrive);
+        $ctmt->bindParam(':vols', $_villeDepart);
+        $ctmt->execute();
+        $result = $ctmt->fetchall();
+        $recordCount = $result[0]['RecordCount'];
     }
 
 

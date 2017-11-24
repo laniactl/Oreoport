@@ -16,8 +16,6 @@ class Flight extends Controller
 
     function liste($departArrivee, $valreqDate)
     {
-        $test = $departArrivee;
-
         if(isset($_POST["recherche"])) {
             $numVol =  ($_POST["recherche"]);
             if ($departArrivee == "depart") {

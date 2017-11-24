@@ -16,18 +16,6 @@ class Notify extends Controller
 
     function newnotification()
     {
-
-//        SELECT
-//    vols_details_id
-//FROM
-//    oreoport.`vols_details`
-//WHERE (date_arrivee ="2017-11-23"
-//    AND num_vols = "LX541");
-
-        $test = 123;
-
-
        $this->model->userAskToBeNotified();
-        $test = 11;
     }
 }

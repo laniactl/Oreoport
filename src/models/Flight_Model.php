@@ -16,10 +16,10 @@ class Flight_Model extends Model
     {
         // Query des departs.
         if ($valreqToday == "today") {
-            $_dateArrive = date('Y-m-d'); //'2017-11-04';
+            $_dateArrive = DATETODAY;
 
         } else {
-            $_dateArrive = date('Y-m-d', time() + 86400);//'2017-11-05';
+            $_dateArrive = DATETOMORROW;
         }
         //$_dateArrive = '2017-11-04';
         $_villeDepart = 'YUL';
@@ -64,9 +64,9 @@ class Flight_Model extends Model
     public function listeArrivee($valreqToday)
     {
         if ($valreqToday == "today") {
-            $_dateArrive = date('Y-m-d');//'2017-11-04';
+            $_dateArrive = DATETODAY;
         } else {
-            $_dateArrive = date('Y-m-d', time() + 86400);//'2017-11-05';
+            $_dateArrive = DATETOMORROW;
         }
         //$_dateArrive = '2017-11-03';
         $_villeDest = 'YUL';
@@ -113,9 +113,9 @@ class Flight_Model extends Model
         $aFiltrer = $_POST["searchId"];
 
         if ($valreqToday == "today") {
-            $_dateArrive = date('Y-m-d');//'2017-11-04';
+            $_dateArrive = DATETODAY;
         } else {
-            $_dateArrive = date('Y-m-d', time() + 86400);//'2017-11-05';
+            $_dateArrive = DATETOMORROW;
         }
         //$_dateArrive = '2017-11-03';
         $_villeDest = 'YUL';
@@ -221,9 +221,9 @@ class Flight_Model extends Model
         $aFiltrer = $_POST["searchId"];
 
         if ($valreqToday == "today") {
-            $_dateArrive = date('Y-m-d');//'2017-11-04';
+            $_dateArrive = DATETODAY;
         } else {
-            $_dateArrive = date('Y-m-d', time() + 86400);//'2017-11-05';
+            $_dateArrive = DATETOMORROW;
         }
 //$_dateArrive = '2017-11-03';
         $_villeDest = 'YUL';

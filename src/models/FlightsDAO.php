@@ -43,7 +43,6 @@ class FlightsDAO extends Model
         $sth->execute();
         /* Récupération de toutes les valeurs de la première colonne */
         $result = $sth->fetchAll();
-        $apa = 123;
         return $result;
     }
 }

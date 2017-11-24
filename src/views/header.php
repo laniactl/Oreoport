@@ -78,13 +78,14 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">N° Vol</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control numvol" placeholder="AA999 ou AA9999">
+                                        <input id="fieldVol" type="text" class="form-control numvol" name="vol" placeholder="AA999 ou AA9999">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Téléphone</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control smsphone" placeholder="(999) 999 9999">
+                                        <input type="text" class="form-control smsphone" name="phone" placeholder="(999) 999 9999">
+                                        <input type="hidden" name="racine" value="pilote">
                                     </div>
                                 </div>
                             </form>
