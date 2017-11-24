@@ -79,7 +79,7 @@ eof;
         $filenameRelativepath = "./tourdecontrole/miseajour/12h00.csv";
         if (file_exists($filenameRelativepath)) {
             $file = fopen("./tourdecontrole/miseajour/12h00.csv", 'r');
-            $_dateModifier = date('Y-m-d');
+            $_dateModifier =  DATETODAY;
             while (($line = fgetcsv($file)) !== FALSE) {
                 $_dateDepart = $line[2];
                 $_dateArrivee = $line[3];
@@ -120,23 +120,10 @@ eof;
                 $nstmt->bindParam(':volsId', $_volsId);
                 $nstmt->execute();
 
-
-
             }
             fclose($file);
         }
 
-
-
-
-
-
-//
-
-//
-//
-//
-//
    }
 
 }
