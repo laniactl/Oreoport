@@ -167,6 +167,8 @@ function loadjTable (depArrivee, todayTomorrow, villeParameter) {
       console.log(record[1]);
       numerovol = record[1]
       $('#fieldVol').val(numerovol);
+      $('#idvoldetail').val(row_id);
+
       // alert('clicked row with id '+row_id +' tes: ' + record  );
     });
   }

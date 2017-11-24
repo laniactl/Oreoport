@@ -27,16 +27,24 @@ class NotifyDAO extends Model
         // TODO: Implement delete() method.
     }
 
-    public function create($obj, $para): bool
+    public function create($arrayNotif): bool
     {
+        $_dateArrive = DATETODAY;
 
-        $ctmt = $this->db->prepare("SELECT vols_details_id FROM oreoport.`vols_details` WHERE (date_arrivee =:datearrive
-    AND num_vols = :vols);");
+        $ctmt = $this->db->prepare("SELECT vols_details_id FROM oreoport.`vols_details` 
+            WHERE (date_arrivee =:datearrive AND num_vols = :vols);");
         $ctmt->bindParam(':datearrive', $_dateArrive);
-        $ctmt->bindParam(':vols', $_villeDepart);
+        $ctmt->bindParam(':vols', $arrayNotif[0]);
         $ctmt->execute();
         $result = $ctmt->fetchall();
-        $recordCount = $result[0]['RecordCount'];
+
+        $st = $this->db->prepare("");
+        $st->bindParam(':datearrive', $_dateArrive);
+        $st->bindParam(':vols', $arrayNotif[0]);
+        $st->execute();
+        $result = $ctmt->fetchall();
+
+        $test =123;
     }
 
 

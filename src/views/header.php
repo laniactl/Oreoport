@@ -85,7 +85,7 @@
                                     <label class="col-sm-2 control-label">Téléphone</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control smsphone" name="phone" placeholder="(999) 999 9999">
-                                        <input type="hidden" name="racine" value="pilote">
+                                        <input id="idvoldetail" type="hidden" name="voldetail_id" value="">
                                     </div>
                                 </div>
                             </form>

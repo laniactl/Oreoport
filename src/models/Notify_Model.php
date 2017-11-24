@@ -36,12 +36,10 @@ class Notify_Model extends Model
 //       $message->setPhoneNumber("+15143468023");
 //       $message->setMessage("Salut je fait un test");
 //       $messagemodel->sendSMS($message);
-        $_vol =  $_POST["vol"];
-        $_phone = $_POST["phone"];
-
-        $test =123;
-
-
+        $arryNotif [0]=  $_POST["vol"];
+        $arryNotif[1] = $_POST["phone"];
+        $notifDAO = new NotifyDAO();
+        $notifDAO->create($arryNotif);
 
     }
     public function userAskToCancelTheNotification(string $_volID, string $_phoneNmb):bool {}
