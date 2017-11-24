@@ -150,7 +150,7 @@ function loadjTable (depArrivee, todayTomorrow, villeParameter) {
     var form = $(document.forms["formsms"]);
     var serializedata = form.serialize();
 
-    $.post("http://localhost/oreoport/notify/newNotification", serializedata, function (data) {
+    $.post("http://localhost/oreoport/notify/newnotification/", serializedata, function (data) {
       alert("reusis sms");
       return false;
     });

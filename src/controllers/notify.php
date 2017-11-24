@@ -1,17 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: patri
- * Date: 2017-11-16
- * Time: 14:24
- */
-
-namespace Src\controllers;
-
 
 class Notify extends Controller
-
 {
+
     function __construct()
     {
         parent::__construct();
@@ -25,7 +16,7 @@ class Notify extends Controller
 
     function newnotification()
     {
-    echo"allas";
+
 //        SELECT
 //    vols_details_id
 //FROM
@@ -33,8 +24,10 @@ class Notify extends Controller
 //WHERE (date_arrivee ="2017-11-23"
 //    AND num_vols = "LX541");
 
-    //
-       $this->model->userAskToBeNotified($_numvol, $_smsPhone);
+        $test = 123;
 
+
+       $this->model->userAskToBeNotified();
+        $test = 11;
     }
 }
