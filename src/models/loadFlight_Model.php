@@ -73,4 +73,70 @@ eof;
 
     }
 
+    public function loadChangementVols()
+    {
+
+        $filenameRelativepath = "./tourdecontrole/miseajour/12h00.csv";
+        if (file_exists($filenameRelativepath)) {
+            $file = fopen("./tourdecontrole/miseajour/12h00.csv", 'r');
+            $_dateModifier = date('Y-m-d');
+            while (($line = fgetcsv($file)) !== FALSE) {
+                $_dateDepart = $line[2];
+                $_dateArrivee = $line[3];
+                $_heureDepart = $line[4];
+                $_heureArrivee = $line[5];
+                $_volStatus = $line[8];
+                $_volsId = $line[0];
+
+                $stmt = $this->db->prepare("UPDATE `vols_details`
+                    SET `date_depart`=:dateDepart,
+                        `date_arrivee`=:dateArrivee,
+                        `heure_est_depart`=:heureDepart,
+                        `heure_est_arrivee`=:heureArrivee,
+                        `date_modified`=:dateModifier,
+                        `vol_status`=:volStatus
+                    WHERE `vols_details_id`=:volsId");
+
+                $stmt->bindParam(':dateDepart', $_dateDepart);
+                $stmt->bindParam(':dateArrivee', $_dateArrivee);
+                $stmt->bindParam(':heureDepart', $_heureDepart);
+                $stmt->bindParam(':heureArrivee', $_heureArrivee);
+                $stmt->bindParam(':dateModifier', $_dateModifier);
+                $stmt->bindParam(':volStatus', $_volStatus);
+                $stmt->bindParam(':volsId', $_volsId);
+
+                $stmt->execute();
+
+                // set les changements de flag de notification avec le nouvel état.
+                $_un = 1;
+                $nstmt = $this->db->prepare("UPDATE `notification`
+                    SET `notification_flag`=:un,
+                    `notification_nature`=:volStatus
+                    WHERE `vols_details_id` =:volsId
+                    and `notification_active` =:un");
+
+                $nstmt->bindParam(':un', $_un);
+                $nstmt->bindParam(':volStatus', $_volStatus);
+                $nstmt->bindParam(':volsId', $_volsId);
+                $nstmt->execute();
+
+
+
+            }
+            fclose($file);
+        }
+
+
+
+
+
+
+//
+
+//
+//
+//
+//
+   }
+
 }
