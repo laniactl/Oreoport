@@ -25,4 +25,11 @@ class loadFlight extends Controller
         $this->model->loadvols();
         $this->index();
     }
+
+    function loadUpdate()
+    {
+        $this->model->loadChangementVols();
+        $this->index();
+
+    }
 }
