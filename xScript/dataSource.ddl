@@ -33,6 +33,7 @@ create table notification
   phone_id varchar(10) not null,
   notification_date date not null,
   notification_heure timestamp default 'current_timestamp()' not null,
+  notification_flag int(1) not null,
   notification_nature varchar(15) not null,
   notification_active int(1) not null
 )
