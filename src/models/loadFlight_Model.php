@@ -19,7 +19,7 @@ class loadFlight_Model extends Model
      */
     public function loadvols()
     {
-        $filenameRelativepath = "./tourdecontrole/vols/oreoportvols.csv";
+        $filenameRelativepath = "./tourdecontrole/vols/oreoport_vols.csv";
         if (file_exists($filenameRelativepath)) {
             $this->deleteAllRowsTable();
             $filename = basename($filenameRelativepath);
@@ -42,9 +42,8 @@ eof;
 
     public function loadvolsDetails()
     {
-        $filenameRelativepath = "./tourdecontrole/details/oreoportvolsdetails.csv";
+        $filenameRelativepath = "./tourdecontrole/details/oreoport_vols_details.csv";
         if (file_exists($filenameRelativepath)) {
-            $this->deleteAllRowsTable("vols_details");
             $filename = basename($filenameRelativepath);
             $pahtFile = realpath(dirname($filenameRelativepath));
             $pahtFileFilename = $pahtFile . "/" . $filename;
