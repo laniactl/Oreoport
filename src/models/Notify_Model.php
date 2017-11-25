@@ -19,14 +19,6 @@ class Notify_Model extends Model
     }
 
     public function userAskToBeNotified(){
-//        $ctmt = $this->db->prepare ("INSERT INTO `notification`(`vols_details_id`, `phone_id`, `notification_date`, `notification_heure`, `notification_active`) VALUES (:vold, :phone, :dateAujourdhui, :heureAujourdhui, :notification) " );
-//        $_setNotification = 1;
-//        $ctmt->bindParam(":vold" , $_volID);
-//        $ctmt->bindParam(":phone" , $_phoneNmb);
-//        $ctmt->bindParam(":dateAujourdhui", date('Y-m-d'));
-//        $ctmt->bindParam(":heureAujourdhui", time());
-//        $ctmt->bindParam(":notification", $_setNotification);
-//        $ctmt->execute();
 
 //       $messagemodel = new Message_Model();
 //       $message = new Message();
@@ -38,12 +30,21 @@ class Notify_Model extends Model
 //       $messagemodel->sendSMS($message);
         $arryNotif [0]=  $_POST["vol"];
         $arryNotif[1] = $_POST["phone"];
+        $arryNotif[2] = $_POST["date"];
+        $arryNotif[3] = $_POST["status"];
         $notifDAO = new NotifyDAO();
         $notifDAO->create($arryNotif);
 
     }
-    public function userAskToCancelTheNotification(string $_volID, string $_phoneNmb):bool {}
-    public function sendNotification(){
+    public function userAskToCancelTheNotification(){
+        $arryNotif [0]=  $_POST["vol"];
+        $arryNotif[1] = $_POST["phone"];
+        $arryNotif[2] = $_POST["date"];
+        $arryNotif[3] = $_POST["status"];
+        $notifDAO = new NotifyDAO();
+        $notifDAO->delete($arryNotif);
 
+    }
+    public function sendNotification(){
     }
 }

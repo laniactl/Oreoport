@@ -2,8 +2,10 @@
 <project version="4">
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/src/models/Flight_Model.php" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/models/NotifyDAO.php" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/src/models/loadFlight_Model.php" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/xScript/creation/oreoport.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/xScript/dataSource.ddl" dialect="MySQL" />
+    <file url="PROJECT" dialect="MySQL" />
   </component>
 </project>

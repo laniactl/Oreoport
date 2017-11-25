@@ -18,4 +18,9 @@ class Notify extends Controller
     {
        $this->model->userAskToBeNotified();
     }
+
+    function cancelnotification()
+    {
+        $this->model->userAskToCancelTheNotification();
+    }
 }

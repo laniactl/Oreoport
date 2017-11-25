@@ -85,6 +85,8 @@
                                     <label class="col-sm-2 control-label">Téléphone</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control smsphone" name="phone" placeholder="(999) 999 9999">
+                                        <input id="statusvol" type="hidden" name="status" value="">
+                                        <input id="datevol" type="hidden" name="date" value="">
                                         <input id="idvoldetail" type="hidden" name="voldetail_id" value="">
                                     </div>
                                 </div>
@@ -92,7 +94,7 @@
                         </div>
                         <div class="modal-footer" id="modal-footer">
                             <button id="sendsms" type="button" class="btn btn btn-success inscription" data-dismiss="modal">M'inscrire</button>
-                            <button type="button" class="btn btn btn-info desincription" data-dismiss="modal">Me désinscrire</button>
+                            <button id="cancelsms" type="button" class="btn btn btn-info desincription" data-dismiss="modal">Me désinscrire</button>
                             <button type="button" class="btn btn btn-warning" data-dismiss="modal">Annuler</button>
                         </div>
                     </div>

@@ -159,17 +159,34 @@
     })
 
     $('#sendsms').click(function () {
-      alert('avant sms')
       var form = $(document.forms['formsms'])
       var serializedata = form.serialize()
 
       $.post('http://localhost/oreoport/notify/newnotification/', serializedata, function (data) {
-        alert('reusis sms')
-        return false
-      })
+        console.log(data);
+        if (data == true){
+          alert('Votre vol a été enregistré vous serrez avisé des changements pour le vol ' + numerovol);
+        }
+        return false;
+      },'json');
 
-    })
-    $('#OreoPortTableContainer').jtable('load')
+    });
+
+    $('#cancelsms').click(function () {
+      var form = $(document.forms['formsms'])
+      var serializedata = form.serialize()
+
+      $.post('http://localhost/oreoport/notify/cancelnotification/', serializedata, function (data) {
+        console.log(data);
+        if (data == true){
+          alert('Votre enregistré pour être notifier pour le vol ' + numerovol + ' à été canceller');
+        }
+        return false;
+      },'json');
+
+    });
+
+    $('#OreoPortTableContainer').jtable('load');
 
     $('#OreoPortTableContainer').jtable({
       recordsLoaded: function (event, data) {
@@ -179,14 +196,17 @@
           console.log(record[1]);
           console.log(record);
           numerovol = record[1];
-          $('#fieldVol').val(numerovol)
-          $('#idvoldetail').val(row_id)
+          var date = record[8];
+          var status = record[4];
 
-          // alert('clicked row with id '+row_id +' tes: ' + record  );
+          $('#fieldVol').val(numerovol);
+          $('#datevol').val(date);
+          $('#idvoldetail').val(row_id);
+          $('#statusvol').val(status);
+
         })
       }
     })
-
     //
     // var $selectedRows = $('#OreoPortTableContainer').jtable('selectedRows'),records = [];
     // $selectedRows.each(function () {
@@ -194,6 +214,5 @@
     //   records.push(record);
     // });
     // console.log(records);
-
   }
 })(jQuery)
