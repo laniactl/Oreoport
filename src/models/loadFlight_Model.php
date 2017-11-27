@@ -17,7 +17,7 @@ class loadFlight_Model extends Model
      * https://stackoverflow.com/questions/19139434/php-move-a-file-into-a-different-folder-on-the-server
      * https://secure.php.net/manual/en/function.basename.php
      */
-    public function loadvols()
+    public function loadvols():bool
     {
         $filenameRelativepath = "./tourdecontrole/vols/oreoport_vols.csv";
         if (file_exists($filenameRelativepath)) {
@@ -34,13 +34,16 @@ LINES TERMINATED BY '\n'
 (vols_id, compagnie_id, ville_provenance, ville_destination, heure_depart, heure_arrivee, temps_de_vols, num_vols);
 eof;
             $result = $this->db->query($query);
-            rename($pahtFileFilename, "./tourdecontrole/archive/".$filename);
+            rename($pahtFileFilename, "./tourdecontrole/archive/" . $filename);
+             if(!$this->loadvolsDetails()) return false;
+
+            return true;
         }
-            $this->loadvolsDetails();
+        return false;
     }
 
 
-    public function loadvolsDetails()
+    public function loadvolsDetails():bool
     {
         $filenameRelativepath = "./tourdecontrole/details/oreoport_vols_details.csv";
         if (file_exists($filenameRelativepath)) {
@@ -56,38 +59,44 @@ eof;
    (oreoport.vols_details.vols_details_id, oreoport.vols_details.num_vols, oreoport.vols_details.date_depart, oreoport.vols_details.date_arrivee, oreoport.vols_details.heure_est_depart, oreoport.vols_details.heure_est_arrivee, oreoport.vols_details.date_modified, oreoport.vols_details.date_created, oreoport.vols_details.vol_status);
 eof;
             $result = $this->db->query($query);
-            rename($pahtFileFilename, "./tourdecontrole/archive/".$filename);
-
+            rename($pahtFileFilename, "./tourdecontrole/archive/" . $filename);
+            return true;
         }
+        return false;
     }
 
-    private function deleteAllRowsTable(){
+    private function deleteAllRowsTable()
+    {
 
         $sql = "TRUNCATE TABLE vols_details";
         $result = $this->db->exec($sql);
 
         $sql = "DELETE FROM vols";
         $result = $this->db->exec($sql);
-        $test =123;
+        $test = 123;
 
     }
 
-    public function loadChangementVols()
+    public function loadChangementVols():int
     {
+        if (!$this->dir_is_empty('./tourdecontrole/miseajour/')) {
+            $dir    = './tourdecontrole/miseajour';
+            $files1 = scandir($dir);
+            $pahtFile = realpath(dirname($dir));
+            $pahtFileFilename = $pahtFile . "/miseajour/" . $files1[2];
 
-        $filenameRelativepath = "./tourdecontrole/miseajour/12h00.csv";
-        if (file_exists($filenameRelativepath)) {
-            $file = fopen("./tourdecontrole/miseajour/12h00.csv", 'r');
-            $_dateModifier =  DATETODAY;
-            while (($line = fgetcsv($file)) !== FALSE) {
-                $_dateDepart = $line[2];
-                $_dateArrivee = $line[3];
-                $_heureDepart = $line[4];
-                $_heureArrivee = $line[5];
-                $_volStatus = $line[8];
-                $_volsId = $line[0];
+            if (file_exists($pahtFileFilename)) {
+                $file = fopen($pahtFileFilename, 'r');
+                $_dateModifier = DATETODAY;
+                while (($line = fgetcsv($file)) !== FALSE) {
+                    $_dateDepart = $line[2];
+                    $_dateArrivee = $line[3];
+                    $_heureDepart = $line[4];
+                    $_heureArrivee = $line[5];
+                    $_volStatus = $line[8];
+                    $_volsId = $line[0];
 
-                $stmt = $this->db->prepare("UPDATE `vols_details`
+                    $stmt = $this->db->prepare("UPDATE `vols_details`
                     SET `date_depart`=:dateDepart,
                         `date_arrivee`=:dateArrivee,
                         `heure_est_depart`=:heureDepart,
@@ -96,33 +105,47 @@ eof;
                         `vol_status`=:volStatus
                     WHERE `vols_details_id`=:volsId");
 
-                $stmt->bindParam(':dateDepart', $_dateDepart);
-                $stmt->bindParam(':dateArrivee', $_dateArrivee);
-                $stmt->bindParam(':heureDepart', $_heureDepart);
-                $stmt->bindParam(':heureArrivee', $_heureArrivee);
-                $stmt->bindParam(':dateModifier', $_dateModifier);
-                $stmt->bindParam(':volStatus', $_volStatus);
-                $stmt->bindParam(':volsId', $_volsId);
+                    $stmt->bindParam(':dateDepart', $_dateDepart);
+                    $stmt->bindParam(':dateArrivee', $_dateArrivee);
+                    $stmt->bindParam(':heureDepart', $_heureDepart);
+                    $stmt->bindParam(':heureArrivee', $_heureArrivee);
+                    $stmt->bindParam(':dateModifier', $_dateModifier);
+                    $stmt->bindParam(':volStatus', $_volStatus);
+                    $stmt->bindParam(':volsId', $_volsId);
 
-                $stmt->execute();
+                    $stmt->execute();
 
-                // set les changements de flag de notification avec le nouvel état.
-                $_un = 1;
-                $nstmt = $this->db->prepare("UPDATE `notification`
+                    // set les changements de flag de notification avec le nouvel état.
+                    $_un = 1;
+                    $nstmt = $this->db->prepare("UPDATE `notification`
                     SET `notification_flag`=:un,
                     `notification_nature`=:volStatus
                     WHERE `vols_details_id` =:volsId
-                    and `notification_active` =:un");
+                    AND `notification_active` =:un");
 
-                $nstmt->bindParam(':un', $_un);
-                $nstmt->bindParam(':volStatus', $_volStatus);
-                $nstmt->bindParam(':volsId', $_volsId);
-                $nstmt->execute();
+                    $nstmt->bindParam(':un', $_un);
+                    $nstmt->bindParam(':volStatus', $_volStatus);
+                    $nstmt->bindParam(':volsId', $_volsId);
+                    $nstmt->execute();
 
+                }
+                fclose($file);
+                rename($pahtFileFilename, "./tourdecontrole/archive/events/" . $files1[2]);
+                return 1;
             }
-            fclose($file);
+            return 0;
         }
+        return -1;
+    }
 
-   }
-
+    function dir_is_empty($dir)
+    {
+        $handle = opendir($dir);
+        while (false !== ($entry = readdir($handle))) {
+            if ($entry != "." && $entry != "..") {
+                return FALSE;
+            }
+        }
+        return TRUE;
+    }
 }

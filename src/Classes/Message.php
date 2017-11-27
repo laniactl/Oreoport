@@ -8,7 +8,6 @@
 
 namespace Src\Classes;
 
-
 class Message
 {
     private $_message;

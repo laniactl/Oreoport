@@ -21,7 +21,8 @@
             "src/config",
             "src/controllers",
             "src/views",
-            "src/models"
+            "src/models",
+            "Thread.php"
         ]
     }
 }
